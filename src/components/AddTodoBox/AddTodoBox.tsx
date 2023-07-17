@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { SetStateAction, useContext, useState } from 'react';
 import { PlusIcon } from '@iconicicons/react';
 import {TodosContext} from 'providers/Todos';
 import './AddTodoBox.css';
@@ -27,9 +27,8 @@ export default function AddTodoBox() {
     setTitle('');
   }
 
-  const setTitleState = (event: any) => {
-    console.log(event);
-    setTitle(event.target.value);
+  const setTitleState = (e: SetStateAction<string>) => {
+    setTitle(e);
   }
 
   return (
@@ -57,7 +56,7 @@ export default function AddTodoBox() {
           setIsError(false);
         }}
         onChange={(e) => {
-          setTitleState(e);
+          setTitleState(String(e));
           setIsError(false);
         }}
       />
