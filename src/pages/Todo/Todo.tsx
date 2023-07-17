@@ -10,8 +10,6 @@ export default function DetailsPage() {
   const params = useParams();
   const todo = todos.find((todo) => todo.id === params.id);
   const navigate = useNavigate();
-  const [title, setTitle] = useState<string>(todo?.title || '');
-  const [desc, setDesc] = useState<string>('');
 
   useEffect(() => {
     if (!isAuthenticated()) {
@@ -27,25 +25,6 @@ export default function DetailsPage() {
     return null;
   }
 
-  const setTitleState = (event: any) => {
-    setTitle(event.target.value);
-  }
-
-  const setDescState = (event: any) => {
-    setDesc(event.target.value);
-  }
-
-  const onSave = () => {
-    dispatch({
-      type: 'edit',
-      payload: {
-        ...todo,
-        title,
-        description: desc
-      }
-    });
-  }
-
   return (
     <Modal
       visible={!!todo}
@@ -53,16 +32,7 @@ export default function DetailsPage() {
     >
       <div className="todo-page-root">
         <div className="todo-page-header">
-          {/* {todo.title} */}
-          <input
-        type="text"
-        placeholder="What's on your mind..."
-        className="add-todo-box-input"
-        value={title}
-        onChange={(e) => {
-          setTitleState(e);
-        }}
-      />
+          {todo.title}
         </div>
 
         <textarea
@@ -70,11 +40,15 @@ export default function DetailsPage() {
           autoFocus={true}
           placeholder="Enter description here..."
           onChange={(e) => {
-            setDescState(e);
+            dispatch({
+              type: 'edit',
+              payload: {
+                ...todo, description: e.target.value
+              }
+            });
           }}
-          value={desc}
+          value={todo.description}
         />
-        <button onClick={onSave}>Save</button>
       </div>
     </Modal>
   )
