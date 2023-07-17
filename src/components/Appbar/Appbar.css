@@ -1,0 +1,29 @@
+.appbar-root {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  background-color: var(--color-bg);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+}
+
+.appbar-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.appbar-logout {
+  padding: 4px 8px;
+  background-color: transparent;
+  border: none;
+  color: #eee;
+  font-weight: 600;
+  margin-left: auto;
+  height: 32px;
+  cursor: pointer;
+}
+
+.appbar-logout:hover {
+  text-decoration: underline;
+}

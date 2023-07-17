@@ -1,0 +1,11 @@
+.todos-page-root {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  z-index: 2;
+}

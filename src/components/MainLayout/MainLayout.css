@@ -1,0 +1,10 @@
+.main-layout {
+  min-height: 100vh;
+}
+
+.main-layout main {
+  --vertical-margin: 1.5em;
+
+  margin-top: var(--vertical-margin);
+  margin-bottom: var(--vertical-margin);
+}
